@@ -32,7 +32,7 @@
 #include <stdarg.h>
 #endif
 
-#define CACA_COMUN_TAM_MAX_LINEA (8*30000+30000)
+#define CACA_COMUN_TAM_MAX_LINEA (11*100000+100000)
 #define CACA_LOG_MAX_TAM_CADENA 2000
 
 #define CACA_COMUN_BUF_STATICO (char[1000] ) { '\0' }
@@ -393,6 +393,7 @@ void r_m_q_chidori_core(natural *consultas, natural consultas_tam) {
 		res = trozo_tree_consulta(raiz, 0, trozo_tree_numeros_tam-1);
 
 		caca_log_debug("el res es %u", res);
+		printf("%d\n",res);
 	}
 
 }
@@ -403,11 +404,13 @@ void r_m_q_chidori_main() {
 	natural consultas_tam = 0;
 
 	scanf("%u", &trozo_tree_numeros_tam);
+	caca_log_debug("num nums %u",trozo_tree_numeros_tam);
 
 	caca_comun_lee_matrix_long_stdin(trozo_tree_numeros, &(int ) { 0 }, NULL, 1,
 			trozo_tree_numeros_tam);
 
 	scanf("%u", &consultas_tam);
+	caca_log_debug("num consuls %u",consultas_tam);
 
 	caca_comun_lee_matrix_long_stdin((tipo_dato *)consultas, &(int ) { 0 }, NULL,
 			consultas_tam, 2);
