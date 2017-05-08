@@ -357,7 +357,7 @@ static inline tipo_dato trozo_tree_consulta(trozo_tree *nodo_actual,
 		if (idx_fin_buscado < idx_ini) {
 			resul = TROZO_TREE_MAX_VALOR;
 		} else {
-			if (idx_ini == idx_ini_buscado && idx_fin == idx_fin_buscado) {
+			if (idx_ini >= idx_ini_buscado && idx_fin <= idx_fin_buscado) {
 				resul = nodo_actual->valor;
 			} else {
 				natural idx_mid = idx_ini + ((idx_fin - idx_ini) >> 1);
@@ -381,7 +381,7 @@ static inline tipo_dato trozo_tree_consulta(trozo_tree *nodo_actual,
 void r_m_q_chidori_core(natural *consultas, natural consultas_tam) {
 	trozo_tree *raiz = NULL;
 
-	trozo_tree_contruye(&raiz, 0, trozo_tree_numeros_tam);
+	trozo_tree_contruye(&raiz, 0, trozo_tree_numeros_tam-1);
 
 	for (int i = 0; i < consultas_tam; i++) {
 		tipo_dato res = 0;
@@ -390,8 +390,9 @@ void r_m_q_chidori_core(natural *consultas, natural consultas_tam) {
 		caca_log_debug("el idx ini busq %u el idx fin busq %u", idx_ini_buscado,
 				idx_fin_buscado);
 
-		res = trozo_tree_consulta(raiz, 0, trozo_tree_numeros_tam);
+		res = trozo_tree_consulta(raiz, 0, trozo_tree_numeros_tam-1);
 
+		caca_log_debug("el res es %u", res);
 	}
 
 }
