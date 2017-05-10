@@ -351,6 +351,7 @@ static inline void trozo_tree_contruye(trozo_tree **nodo_actual,
 static inline tipo_dato trozo_tree_consulta(trozo_tree *nodo_actual,
 		natural idx_ini, natural idx_fin) {
 	tipo_dato resul = TROZO_TREE_MAX_VALOR;
+
 	if (idx_ini_buscado > idx_fin) {
 		resul = TROZO_TREE_MAX_VALOR;
 	} else {
